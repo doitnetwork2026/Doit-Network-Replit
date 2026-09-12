@@ -152,12 +152,12 @@ export const AuthPortalModal: React.FC<AuthPortalModalProps> = ({
               whileHover={{ scale: 1.05, rotate: 2 }}
               className="w-24 h-24 sm:w-28 sm:h-28 rounded-[28px] bg-[#00c29e] shadow-xl shadow-[#00c29e]/30 border-4 border-white flex items-center justify-center p-3"
             >
-              {/* Custom Dark Brand Monogram mimicking the screenshot's crisp logo */}
-              <div className="w-full h-full bg-zinc-950 rounded-[20px] flex items-center justify-center shadow-inner">
-                <span className="text-white text-3xl sm:text-4xl font-black tracking-tighter select-none font-sans">
-                  D
-                </span>
-              </div>
+              {/* Use the real DN logo from the project assets. */}
+              <DoitLogo
+                className="w-full h-full"
+                rounded="rounded-[20px]"
+                border={false}
+              />
             </motion.div>
           </div>
 
