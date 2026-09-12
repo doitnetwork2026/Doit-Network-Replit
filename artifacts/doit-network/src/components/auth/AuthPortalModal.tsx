@@ -161,8 +161,8 @@ export const AuthPortalModal: React.FC<AuthPortalModalProps> = ({
             </motion.div>
           </div>
 
-          {/* Main Themed Card Box (Matching screenshot's vibrant themed canvas) */}
-          <div className="w-full bg-[#00c29e] rounded-[32px] pt-14 pb-8 px-6 sm:px-8 shadow-2xl border border-[#00a889] text-zinc-900 relative overflow-hidden">
+          {/* Main login card */}
+          <div className="w-full bg-white rounded-[32px] pt-14 pb-8 px-6 sm:px-8 shadow-2xl border border-zinc-200 text-zinc-900 relative overflow-hidden">
             
             {/* Close Button */}
             <button
@@ -417,7 +417,7 @@ export const AuthPortalModal: React.FC<AuthPortalModalProps> = ({
                     onClose();
                   }, 200);
                 }}
-                className="px-3 py-1.5 rounded-full bg-white/90 hover:bg-white text-zinc-950 text-xs font-bold shadow-xs transition-all cursor-pointer flex items-center gap-1.5"
+                className="px-3 py-1.5 rounded-full bg-white hover:bg-zinc-50 border border-zinc-200 text-zinc-950 text-xs font-bold shadow-xs transition-all cursor-pointer flex items-center gap-1.5"
               >
                 <User className="w-3.5 h-3.5 text-[#00755f]" />
                 <span>Customer (Rohan)</span>
@@ -435,7 +435,7 @@ export const AuthPortalModal: React.FC<AuthPortalModalProps> = ({
                     onClose();
                   }, 200);
                 }}
-                className="px-3 py-1.5 rounded-full bg-white/90 hover:bg-white text-zinc-950 text-xs font-bold shadow-xs transition-all cursor-pointer flex items-center gap-1.5"
+                className="px-3 py-1.5 rounded-full bg-white hover:bg-zinc-50 border border-zinc-200 text-zinc-950 text-xs font-bold shadow-xs transition-all cursor-pointer flex items-center gap-1.5"
               >
                 <Wrench className="w-3.5 h-3.5 text-[#00755f]" />
                 <span>Provider (Rahul)</span>
