@@ -150,7 +150,7 @@ export const AuthPortalModal: React.FC<AuthPortalModalProps> = ({
           <div className="relative -mb-10 z-20">
             <motion.div 
               whileHover={{ scale: 1.05, rotate: 2 }}
-              className="w-24 h-24 sm:w-28 sm:h-28 rounded-[28px] bg-[#00c29e] shadow-xl shadow-[#00c29e]/30 border-4 border-white flex items-center justify-center p-3"
+              className="w-24 h-24 sm:w-28 sm:h-28 rounded-[28px] bg-white shadow-xl shadow-zinc-900/10 border-4 border-white flex items-center justify-center p-3"
             >
               {/* Use the real DN logo from the project assets. */}
               <DoitLogo
