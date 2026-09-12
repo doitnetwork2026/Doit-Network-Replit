@@ -1,0 +1,6 @@
+{
+  "name": "Doit Network - Hyperlocal Home Services",
+  "description": "Trusted local home service professionals in BHEL, Bhopal. Connecting verified gardeners, domestic helpers, painters, technicians, and caretakers with seamless booking, live tracking, and operations management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

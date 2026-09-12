@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Doit Network Home Services"
+description = "A hyperlocal BHEL Bhopal home-services marketplace connecting customers with trusted local service partners, with customer booking, provider tools, and shared login access."
+version = "1.0.0"
+id = "artifacts/doit-network"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24625
+
+[services.development]
+run = "pnpm --filter @workspace/doit-network run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/doit-network", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/doit-network/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24625"
+BASE_PATH = "/"
