@@ -483,7 +483,7 @@ export default function App() {
   const activeCustomerBookingsCount = bookings.filter(b => b.status !== 'COMPLETED' && b.status !== 'CANCELLED').length;
 
   return (
-    <div className="min-h-screen bg-[#fafaf9] flex flex-col font-sans text-zinc-900">
+    <div className="min-h-screen bg-[#fafaf9] dark:bg-zinc-950 flex flex-col font-sans text-zinc-900 dark:text-zinc-100 transition-colors duration-200">
       
       {/* Toast popup */}
       <AnimatePresence>
@@ -493,7 +493,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -16, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 450, damping: 30 }}
-            className="fixed top-14 left-1/2 -translate-x-1/2 z-50 bg-zinc-950 text-white text-xs px-4 py-2.5 rounded-2xl shadow-xl border border-zinc-800 flex items-center gap-2"
+            className="fixed top-14 left-1/2 -translate-x-1/2 z-50 bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 text-xs px-4 py-2.5 rounded-2xl shadow-xl border border-zinc-800 dark:border-zinc-200 flex items-center gap-2 max-w-[calc(100vw-2rem)]"
           >
             <span className="w-2 h-2 rounded-full bg-[#00c29e]" />
             <span>{toastMessage}</span>

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-brand: #00c29e;
   --color-brand-hover: #00a889;
@@ -15,6 +17,11 @@
   color-scheme: light;
 }
 
+:root.dark,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
 body {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: #fafaf9;
@@ -23,8 +30,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.dark body,
+html.dark body {
+  background-color: #09090b;
+  color: #f4f4f5;
+}
+
 h1, h2, h3, h4, h5, h6, button, input, select, textarea, .font-poppins {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html,
+body,
+#root {
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* Custom scrollbar for minimal UI feel */
@@ -41,4 +65,111 @@ h1, h2, h3, h4, h5, h6, button, input, select, textarea, .font-poppins {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1aa;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+/* Shared fallback palette for legacy screens that predate dark variants. */
+.dark .bg-white,
+.dark .bg-white\/95,
+.dark .bg-white\/90,
+.dark .bg-white\/80,
+.dark .bg-white\/70,
+.dark .bg-white\/60 {
+  background-color: #18181b;
+}
+
+.dark .bg-zinc-50,
+.dark .bg-zinc-50\/80,
+.dark .bg-zinc-50\/70,
+.dark .bg-zinc-50\/60 {
+  background-color: #18181b;
+}
+
+.dark .bg-zinc-100,
+.dark .bg-zinc-100\/80,
+.dark .bg-zinc-100\/70 {
+  background-color: #27272a;
+}
+
+.dark .text-zinc-950,
+.dark .text-zinc-900 {
+  color: #f4f4f5;
+}
+
+.dark .text-zinc-800,
+.dark .text-zinc-700 {
+  color: #e4e4e7;
+}
+
+.dark .text-zinc-600,
+.dark .text-zinc-500 {
+  color: #a1a1aa;
+}
+
+.dark .text-zinc-400 {
+  color: #71717a;
+}
+
+.dark .border-zinc-100,
+.dark .border-zinc-200,
+.dark .border-zinc-200\/80,
+.dark .border-zinc-200\/90,
+.dark .border-zinc-300 {
+  border-color: #3f3f46;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  color-scheme: dark;
+}
+
+/* Leaflet surfaces need explicit colors because they render outside Tailwind. */
+.leaflet-popup-content-wrapper {
+  background: #ffffff !important;
+  color: #18181b !important;
+  border-radius: 14px !important;
+  border: 1px solid #e4e4e7 !important;
+  box-shadow: none !important;
+  padding: 6px !important;
+}
+
+.dark .leaflet-popup-content-wrapper {
+  background: #18181b !important;
+  color: #f4f4f5 !important;
+  border-color: #3f3f46 !important;
+}
+
+.leaflet-popup-tip-container,
+.leaflet-popup-tip {
+  display: none !important;
+}
+
+.leaflet-popup-content {
+  margin: 6px 10px !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-container {
+  background: #f4f4f5 !important;
+  font-family: inherit !important;
+}
+
+.dark .leaflet-container {
+  background: #09090b !important;
+}
+
+.dark .leaflet-tile {
+  filter: brightness(0.65) invert(0.9) hue-rotate(185deg) saturate(0.5) contrast(1.15);
 }

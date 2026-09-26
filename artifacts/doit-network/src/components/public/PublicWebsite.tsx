@@ -143,13 +143,13 @@ export const PublicWebsite: React.FC<PublicWebsiteProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#fafaf9] text-zinc-900 selection:bg-[#00c29e]/30 selection:text-zinc-950">
+    <div className="min-h-screen bg-[#fafaf9] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 selection:bg-[#00c29e]/30 selection:text-zinc-950 transition-colors duration-200">
       
       {/* Hero Section — Minimal, Spacious & High-Clarity */}
-        <section className="relative overflow-hidden bg-white border-b border-zinc-200/80 pt-10 sm:pt-16 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden bg-white dark:bg-zinc-900/60 border-b border-zinc-200/80 dark:border-zinc-800 pt-10 sm:pt-16 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8">
         
         {/* Subtle decorative glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-[#00c29e]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-[#00c29e]/5 dark:bg-[#00c29e]/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative max-w-4xl mx-auto">
           <div className="flex flex-col items-center text-center space-y-5 sm:space-y-6">
@@ -159,13 +159,13 @@ export const PublicWebsite: React.FC<PublicWebsiteProps> = ({
               <button
                 type="button"
                 onClick={() => setIsMapModalOpen(true)}
-                className="inline-flex max-w-full items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-[#f0fdf9] hover:bg-[#e6faf6] border border-[#99ede0] text-xs text-[#00755f] mx-auto shadow-2xs transition-all cursor-pointer group"
+                className="inline-flex max-w-full items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-[#f0fdf9] dark:bg-[#00755f]/20 hover:bg-[#e6faf6] dark:hover:bg-[#00755f]/30 border border-[#99ede0] dark:border-[#00755f]/40 text-xs text-[#00755f] dark:text-[#99ede0] mx-auto shadow-2xs transition-all cursor-pointer group"
                 title="Click to view interactive BHEL Leaflet Map"
               >
                 <MapPin className="w-3.5 h-3.5 text-[#00c29e] group-hover:scale-110 transition-transform" />
-                <span className="font-semibold text-zinc-900 truncate">Serving {selectedLocality}</span>
-                <span className="hidden sm:inline text-zinc-300">•</span>
-                <span className="hidden sm:inline font-medium text-[#00755f]">Verified Hyper Local Network</span>
+                <span className="font-semibold text-zinc-900 dark:text-zinc-100 truncate">Serving {selectedLocality}</span>
+                <span className="hidden sm:inline text-zinc-300 dark:text-zinc-600">•</span>
+                <span className="hidden sm:inline font-medium text-[#00755f] dark:text-[#00c29e]">Verified Hyper Local Network</span>
                 <span className="text-[10px] font-bold bg-[#00c29e] text-white px-2 py-0.5 rounded-full ml-1">
                   <span className="sm:hidden">Map</span>
                   <span className="hidden sm:inline">Change on Map</span>
@@ -173,11 +173,11 @@ export const PublicWebsite: React.FC<PublicWebsiteProps> = ({
               </button>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.15] text-zinc-900 max-w-3xl mx-auto">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.15] text-zinc-900 dark:text-white max-w-3xl mx-auto">
               Trusted local professionals for everyday home needs.
             </h1>
 
-            <p className="text-sm sm:text-lg text-zinc-600 max-w-2xl font-normal leading-relaxed mx-auto">
+            <p className="text-sm sm:text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl font-normal leading-relaxed mx-auto">
               Reliable home services, right where you need them. DOIT connects Local residents with verified local professionals, making it simple to request, coordinate, and manage everyday services with confidence.
             </p>
 
@@ -190,7 +190,7 @@ export const PublicWebsite: React.FC<PublicWebsiteProps> = ({
                   placeholder="Search gardener, maid, painter, driver, labour..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-4 h-12 bg-white border-2 border-zinc-700 text-sm text-zinc-900 placeholder:text-zinc-500 rounded-full focus-visible:ring-2 focus-visible:ring-zinc-800 focus-visible:border-zinc-800 transition-all shadow-xs text-left"
+                    className="w-full pl-11 pr-4 h-12 bg-white dark:bg-zinc-800 border-2 border-zinc-700 dark:border-zinc-600 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-500 dark:placeholder:text-zinc-400 rounded-full focus-visible:ring-2 focus-visible:ring-zinc-800 focus-visible:border-zinc-800 transition-all shadow-xs text-left"
                 />
               </div>
               <button
@@ -206,15 +206,15 @@ export const PublicWebsite: React.FC<PublicWebsiteProps> = ({
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs text-zinc-500 mx-auto">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-[#00c29e]" />
-                <span className="font-medium text-zinc-700">Trusted & Verified Professionals</span>
+                <span className="font-medium text-zinc-700 dark:text-zinc-300">Trusted & Verified Professionals</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-[#00c29e]" />
-                <span className="font-medium text-zinc-700">Transparent Pricing</span>
+                <span className="font-medium text-zinc-700 dark:text-zinc-300">Transparent Pricing</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-[#00c29e]" />
-                <span className="font-medium text-zinc-700">Hyperlocal Service</span>
+                <span className="font-medium text-zinc-700 dark:text-zinc-300">Hyperlocal Service</span>
               </div>
             </div>
 

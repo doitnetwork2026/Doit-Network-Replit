@@ -44,6 +44,7 @@ import { AdminRefundsTab } from './AdminRefundsTab';
 import { BookingLocationMap } from '../maps/BookingLocationMap';
 
 import { X } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 interface AdminDashboardProps {
   bookings: Booking[];
@@ -93,19 +94,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   onNavigateAdminDashboard
 }) => {
   // Theme State
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-  });
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(nextTheme);
-    if (nextTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  };
+  const { resolvedTheme: theme, toggleTheme } = useTheme();
 
   // Auth Session State
   const [adminSession, setAdminSession] = useState<{

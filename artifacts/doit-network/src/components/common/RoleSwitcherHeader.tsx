@@ -18,9 +18,12 @@ import {
   Layers,
   ChevronDown,
   Map as MapIcon,
-  LogIn
+  LogIn,
+  Moon,
+  Sun
 } from 'lucide-react';
 import { LocationSelectorMapModal } from '../maps/LocationSelectorMapModal';
+import { useTheme } from '../../context/ThemeContext';
 
 interface RoleSwitcherHeaderProps {
   currentRole: UserRole;
@@ -45,6 +48,7 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const { resolvedTheme, toggleTheme } = useTheme();
 
   const localities = [
     'BHEL Area, Bhopal',
@@ -96,7 +100,7 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200/80 shadow-2xs">
+    <header className="sticky top-0 z-50 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800 shadow-2xs transition-colors">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 relative">
         <div className="flex items-center justify-between py-2.5 gap-1.5 sm:gap-4">
           
@@ -110,8 +114,8 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
               <DoitLogo className="w-7 h-7 sm:w-8 sm:h-8 group-hover:scale-105 transition-transform" />
               <div className="min-w-0">
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="font-bold text-sm sm:text-lg tracking-tight text-zinc-900 whitespace-nowrap">Doit Network</span>
-                  <span className="hidden sm:inline-flex text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded-full bg-[#e6faf6] text-[#00755f] border border-[#99ede0]">
+                  <span className="font-bold text-sm sm:text-lg tracking-tight text-zinc-900 dark:text-white whitespace-nowrap">Doit Network</span>
+                  <span className="hidden sm:inline-flex text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded-full bg-[#e6faf6] dark:bg-[#00755f]/25 text-[#00755f] dark:text-[#99ede0] border border-[#99ede0] dark:border-[#00755f]/40">
                     Bhopal
                   </span>
                   {currentRole !== 'public' && (
@@ -120,7 +124,7 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
                     </span>
                   )}
                 </div>
-                <p className="hidden sm:block text-[10px] sm:text-[11px] text-zinc-400 -mt-0.5 font-normal">Hyperlocal Home Services</p>
+                <p className="hidden sm:block text-[10px] sm:text-[11px] text-zinc-400 dark:text-zinc-500 -mt-0.5 font-normal">Hyperlocal Home Services</p>
               </div>
             </motion.div>
           </div>
@@ -160,9 +164,9 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
           </nav>
 
           {/* Right Section: Locality Selector on all screens + Desktop More Menu button ONLY on lg: */}
-          <div className="flex items-center gap-2 sm:gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2.5">
             {/* Locality Selector Pill with Google Map trigger */}
-            <div className="flex items-center gap-1 sm:gap-1.5 bg-zinc-50 hover:bg-zinc-100 border border-zinc-200/90 rounded-full px-2 sm:px-3 py-1 text-xs text-zinc-600 transition-colors shrink-0">
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200/90 dark:border-zinc-700 rounded-full px-2 sm:px-3 py-1 text-xs text-zinc-600 dark:text-zinc-300 transition-colors shrink-0">
               <button
                 type="button"
                 onClick={() => setIsMapModalOpen(true)}
@@ -175,10 +179,10 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
                 aria-label="Select locality"
                 value={selectedLocality}
                 onChange={(e) => onSelectLocality(e.target.value)}
-                className="bg-transparent text-xs text-zinc-800 font-medium focus:outline-none cursor-pointer pr-1 max-w-[112px] sm:max-w-[160px] truncate"
+                className="bg-transparent text-xs text-zinc-800 dark:text-zinc-200 font-medium focus:outline-none cursor-pointer pr-1 max-w-[112px] sm:max-w-[160px] truncate"
               >
                 {localities.map((loc) => (
-                  <option key={loc} value={loc} className="bg-white text-zinc-900">
+                  <option key={loc} value={loc} className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100">
                     {loc}
                   </option>
                 ))}
@@ -187,12 +191,22 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
                 type="button"
                 onClick={() => setIsMapModalOpen(true)}
                 title="Select on BHEL Map"
-                className="hidden sm:inline-flex items-center gap-0.5 text-[10px] font-bold text-[#00755f] bg-[#e6faf6] hover:bg-[#d0f5ee] px-1.5 py-0.5 rounded-full border border-[#99ede0] transition-colors cursor-pointer"
+                className="hidden sm:inline-flex items-center gap-0.5 text-[10px] font-bold text-[#00755f] dark:text-[#00c29e] bg-[#e6faf6] dark:bg-[#00755f]/25 hover:bg-[#d0f5ee] dark:hover:bg-[#00755f]/35 px-1.5 py-0.5 rounded-full border border-[#99ede0] dark:border-[#00755f]/40 transition-colors cursor-pointer"
               >
                 <MapIcon className="w-2.5 h-2.5" />
                 <span>Map</span>
               </button>
             </div>
+
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={resolvedTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+              title={resolvedTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-200/90 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+            >
+              {resolvedTheme === 'dark' ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4" />}
+            </button>
 
             {/* Desktop-Only More Options Dropdown Button (Completely HIDDEN on mobile & tablet) */}
             <div className="hidden lg:block relative">
@@ -202,8 +216,8 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
                 aria-expanded={isMenuOpen}
                 className={`p-2 rounded-xl border transition-all cursor-pointer flex items-center justify-center ${
                   isMenuOpen
-                    ? 'bg-zinc-900 text-white border-zinc-900 shadow-sm'
-                    : 'bg-zinc-50 hover:bg-zinc-100 text-zinc-700 border-zinc-200/90 shadow-2xs hover:border-zinc-300'
+                    ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 border-zinc-900 dark:border-zinc-100 shadow-sm'
+                    : 'bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border-zinc-200/90 dark:border-zinc-700 shadow-2xs hover:border-zinc-300 dark:hover:border-zinc-600'
                 }`}
               >
                 {isMenuOpen ? (
@@ -236,22 +250,22 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96, y: -6 }}
                 transition={{ type: 'spring', stiffness: 450, damping: 30 }}
-                className="hidden lg:flex absolute right-4 sm:right-6 lg:right-8 top-full mt-2 w-96 bg-white rounded-2xl border border-zinc-200 shadow-2xl z-50 overflow-hidden flex-col max-h-[calc(100vh-80px)] origin-top-right"
+                className="hidden lg:flex absolute right-4 sm:right-6 lg:right-8 top-full mt-2 w-96 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-2xl z-50 overflow-hidden flex-col max-h-[calc(100vh-80px)] origin-top-right"
               >
                 
                 {/* Dropdown Header */}
-                <div className="p-3.5 border-b border-zinc-100 flex items-center justify-between bg-zinc-50/80">
+                <div className="p-3.5 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between bg-zinc-50/80 dark:bg-zinc-800/80">
                   <div className="flex items-center gap-2">
                     <DoitLogo className="w-7 h-7" rounded="rounded-lg" />
                     <div>
-                      <h3 className="font-bold text-xs text-zinc-900">Doit Network</h3>
-                      <p className="text-[10px] text-zinc-500">Hyperlocal Home Services • BHEL Bhopal</p>
+                      <h3 className="font-bold text-xs text-zinc-900 dark:text-white">Doit Network</h3>
+                      <p className="text-[10px] text-zinc-500 dark:text-zinc-400">Hyperlocal Home Services • BHEL Bhopal</p>
                     </div>
                   </div>
 
                   <button
                     onClick={() => setIsMenuOpen(false)}
-                    className="p-1.5 rounded-lg hover:bg-zinc-200/70 text-zinc-400 hover:text-zinc-800 transition-colors cursor-pointer"
+                     className="p-1.5 rounded-lg hover:bg-zinc-200/70 dark:hover:bg-zinc-700 text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors cursor-pointer"
                     aria-label="Close menu"
                   >
                     <X className="w-4 h-4" />

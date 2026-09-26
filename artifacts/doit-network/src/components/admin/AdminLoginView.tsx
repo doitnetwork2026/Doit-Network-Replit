@@ -102,7 +102,7 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 text-zinc-950">
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-100 transition-colors">
       <div className="grid min-h-screen lg:grid-cols-[minmax(0,1fr)_520px]">
         <section className="relative hidden overflow-hidden bg-zinc-950 px-12 py-12 text-white lg:flex lg:flex-col lg:justify-between xl:px-20">
           <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full border border-white/10" />
@@ -161,14 +161,14 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({
             </div>
 
             <div className="mb-7">
-              <span className="inline-flex rounded-full bg-zinc-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-600">
+              <span className="inline-flex rounded-full bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-600 dark:text-zinc-300">
                 Admin portal
               </span>
-              <h2 className="mt-4 text-3xl font-black tracking-tight">Welcome back, Admin</h2>
-              <p className="mt-2 text-sm leading-5 text-zinc-500">Sign in to manage Doit Networks.</p>
+               <h2 className="mt-4 text-3xl font-black tracking-tight">Welcome back, Admin</h2>
+               <p className="mt-2 text-sm leading-5 text-zinc-500 dark:text-zinc-400">Sign in to manage Doit Networks.</p>
             </div>
 
-            <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
+             <div className="rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-sm sm:p-8">
               {errorMessage && (
                 <div className="mb-5 flex items-start gap-2.5 rounded-2xl border border-rose-200 bg-rose-50 p-3.5 text-xs text-rose-800" role="alert">
                   <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose-600" />
@@ -188,7 +188,7 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label htmlFor="admin-email" className="mb-2 block text-xs font-bold text-zinc-700">
+                     <label htmlFor="admin-email" className="mb-2 block text-xs font-bold text-zinc-700 dark:text-zinc-300">
                     Email address
                   </label>
                   <div className="relative">
@@ -200,14 +200,14 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
                       placeholder="admin@doitnetwork.in"
-                      className="h-12 w-full rounded-xl border border-zinc-200 bg-zinc-50 pl-11 pr-4 text-sm font-medium text-zinc-950 outline-none transition-colors placeholder:text-zinc-400 focus:border-zinc-950 focus:bg-white focus:ring-2 focus:ring-zinc-950/10"
+                       className="h-12 w-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 pl-11 pr-4 text-sm font-medium text-zinc-950 dark:text-white outline-none transition-colors placeholder:text-zinc-400 focus:border-zinc-950 dark:focus:border-zinc-300 focus:bg-white dark:focus:bg-zinc-900 focus:ring-2 focus:ring-zinc-950/10"
                     />
                   </div>
                 </div>
 
                 <div>
                   <div className="mb-2 flex items-center justify-between">
-                    <label htmlFor="admin-password" className="block text-xs font-bold text-zinc-700">
+                     <label htmlFor="admin-password" className="block text-xs font-bold text-zinc-700 dark:text-zinc-300">
                       Password
                     </label>
                     <button
@@ -217,7 +217,7 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({
                         setForgotSubmitted(false);
                         setShowForgotModal(true);
                       }}
-                      className="text-[11px] font-bold text-zinc-600 underline underline-offset-2 hover:text-zinc-950"
+                       className="text-[11px] font-bold text-zinc-600 dark:text-zinc-400 underline underline-offset-2 hover:text-zinc-950 dark:hover:text-white"
                     >
                       Forgot password?
                     </button>
@@ -231,12 +231,12 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
                       placeholder="Enter your password"
-                      className="h-12 w-full rounded-xl border border-zinc-200 bg-zinc-50 pl-11 pr-11 text-sm font-medium text-zinc-950 outline-none transition-colors placeholder:text-zinc-400 focus:border-zinc-950 focus:bg-white focus:ring-2 focus:ring-zinc-950/10"
+                       className="h-12 w-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 pl-11 pr-11 text-sm font-medium text-zinc-950 dark:text-white outline-none transition-colors placeholder:text-zinc-400 focus:border-zinc-950 dark:focus:border-zinc-300 focus:bg-white dark:focus:bg-zinc-900 focus:ring-2 focus:ring-zinc-950/10"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword((visible) => !visible)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-zinc-400 hover:text-zinc-800"
+                       className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-zinc-400 hover:text-zinc-800 dark:hover:text-white"
                       aria-label={showPassword ? 'Hide password' : 'Show password'}
                     >
                       {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -254,7 +254,7 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({
                 </button>
               </form>
 
-              <div className="mt-6 flex items-center justify-center gap-2 border-t border-zinc-100 pt-5 text-[11px] font-semibold text-zinc-400">
+               <div className="mt-6 flex items-center justify-center gap-2 border-t border-zinc-100 dark:border-zinc-800 pt-5 text-[11px] font-semibold text-zinc-400">
                 <ShieldCheck className="h-4 w-4 text-[#00876e]" />
                 Protected admin access
               </div>
@@ -265,16 +265,16 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({
 
       {showForgotModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/60 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-6 shadow-2xl sm:p-8">
+           <div className="w-full max-w-md rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-2xl sm:p-8">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-400">Admin access</p>
-                <h3 className="mt-2 text-xl font-black tracking-tight text-zinc-950">Reset your password</h3>
+                 <h3 className="mt-2 text-xl font-black tracking-tight text-zinc-950 dark:text-white">Reset your password</h3>
               </div>
               <button
                 type="button"
                 onClick={() => setShowForgotModal(false)}
-                className="rounded-full bg-zinc-100 p-2 text-zinc-500 hover:bg-zinc-200 hover:text-zinc-950"
+                   className="rounded-full bg-zinc-100 dark:bg-zinc-800 p-2 text-zinc-500 hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:text-zinc-950 dark:hover:text-white"
                 aria-label="Close reset password"
               >
                 <X className="h-4 w-4" />
@@ -288,10 +288,10 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({
               </div>
             ) : (
               <>
-                <p className="mt-3 text-sm leading-5 text-zinc-500">
+                 <p className="mt-3 text-sm leading-5 text-zinc-500 dark:text-zinc-400">
                   Enter your admin email and we&apos;ll help you reset your password.
                 </p>
-                <label htmlFor="forgot-admin-email" className="mt-5 block text-xs font-bold text-zinc-700">
+                 <label htmlFor="forgot-admin-email" className="mt-5 block text-xs font-bold text-zinc-700 dark:text-zinc-300">
                   Admin email
                 </label>
                 <input
@@ -300,7 +300,7 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({
                   value={forgotEmail}
                   onChange={(event) => setForgotEmail(event.target.value)}
                   placeholder="admin@doitnetwork.in"
-                  className="mt-2 h-12 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 text-sm outline-none focus:border-zinc-950 focus:bg-white focus:ring-2 focus:ring-zinc-950/10"
+                   className="mt-2 h-12 w-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 px-4 text-sm text-zinc-950 dark:text-white outline-none focus:border-zinc-950 dark:focus:border-zinc-300 focus:bg-white dark:focus:bg-zinc-900 focus:ring-2 focus:ring-zinc-950/10"
                 />
                 <button
                   type="button"

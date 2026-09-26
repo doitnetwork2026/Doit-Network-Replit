@@ -83,7 +83,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
   return (
     <nav 
       aria-label="Mobile and Tablet Bottom Navigation"
-      className="fixed bottom-0 left-0 right-0 z-50 block lg:hidden bg-white/95 backdrop-blur-md border-t border-zinc-200/90 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] px-2 sm:px-4 pt-1.5 pb-[max(env(safe-area-inset-bottom,0px),8px)] safe-area-inset-bottom"
+       className="fixed bottom-2 sm:bottom-3 left-2 right-2 sm:left-4 sm:right-4 z-50 block lg:hidden bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border border-zinc-200/90 dark:border-zinc-800 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_-4px_24px_rgba(0,0,0,0.35)] rounded-3xl px-2 sm:px-4 pt-1.5 pb-[max(env(safe-area-inset-bottom,0px),8px)] safe-area-inset-bottom"
     >
       <div className="max-w-md sm:max-w-xl md:max-w-2xl mx-auto flex items-center justify-around gap-1 sm:gap-2">
         {navItems.map((item) => {
@@ -99,8 +99,8 @@ export const BottomNav: React.FC<BottomNavProps> = ({
               aria-label={`${item.label} (${item.sublabel})`}
               className={`${item.id === 'login' ? 'hidden sm:flex' : 'flex'} relative flex-col items-center justify-center flex-1 py-1.5 px-1 sm:px-3 rounded-2xl transition-all duration-150 cursor-pointer select-none active:scale-95 touch-manipulation min-h-[48px] ${
                 isActive 
-                  ? 'text-[#00755f] bg-[#e6faf6] border border-[#99ede0]/80 shadow-2xs font-bold' 
-                  : 'text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100/70 border border-transparent'
+                   ? 'text-[#00755f] dark:text-[#00c29e] bg-[#e6faf6] dark:bg-[#00c29e]/15 border border-[#99ede0]/80 dark:border-[#00c29e]/30 shadow-2xs font-bold'
+                   : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100/70 dark:hover:bg-white/5 border border-transparent'
               }`}
             >
               {/* Icon Container with Notification Badge */}
@@ -108,8 +108,8 @@ export const BottomNav: React.FC<BottomNavProps> = ({
                 <Icon 
                   className={`w-5 h-5 sm:w-5.5 sm:h-5.5 transition-transform ${
                     isActive 
-                      ? 'text-[#00c29e] stroke-[2.3] scale-105' 
-                      : 'text-zinc-500 stroke-[1.8]'
+                       ? 'text-[#00c29e] stroke-[2.3] scale-105'
+                       : 'text-zinc-500 dark:text-zinc-400 stroke-[1.8]'
                   }`} 
                 />
 
@@ -124,14 +124,14 @@ export const BottomNav: React.FC<BottomNavProps> = ({
 
               {/* Label & Tablet Sublabel */}
               <span className={`text-[11px] sm:text-xs tracking-tight mt-1 transition-colors leading-tight ${
-                isActive ? 'font-bold text-zinc-900' : 'font-medium text-zinc-500'
+                 isActive ? 'font-bold text-zinc-900 dark:text-white' : 'font-medium text-zinc-500 dark:text-zinc-400'
               }`}>
                 {item.label}
               </span>
 
               {/* Tablet-only subtle context descriptor */}
               <span className={`hidden sm:block text-[9px] mt-0.5 tracking-tight ${
-                isActive ? 'text-[#00755f] font-semibold' : 'text-zinc-400'
+                 isActive ? 'text-[#00755f] dark:text-[#00c29e] font-semibold' : 'text-zinc-400 dark:text-zinc-500'
               }`}>
                 {item.sublabel}
               </span>

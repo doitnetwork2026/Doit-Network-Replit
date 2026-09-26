@@ -31,7 +31,7 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = () 
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 15 }}
             transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-            className="mb-3 w-80 sm:w-88 rounded-2xl bg-white shadow-2xl border border-zinc-200/90 overflow-hidden text-zinc-900 origin-bottom-right pointer-events-auto"
+            className="mb-3 w-[calc(100vw-1.5rem)] max-w-80 sm:w-88 rounded-2xl bg-white dark:bg-zinc-900 shadow-2xl border border-zinc-200/90 dark:border-zinc-800 overflow-hidden text-zinc-900 dark:text-zinc-100 origin-bottom-right pointer-events-auto"
           >
             {/* Header */}
             <div className="bg-[#00c29e] text-white p-4 flex items-center justify-between">
@@ -54,10 +54,10 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = () 
             </div>
 
             {/* Body */}
-            <div className="p-4 bg-zinc-50/60 space-y-3 text-xs">
-              <div className="p-3 rounded-xl bg-white border border-zinc-200/70 shadow-2xs space-y-1 text-zinc-700">
-                <p className="font-semibold text-zinc-900">Namaste! How can we assist you?</p>
-                <p className="text-zinc-500 text-[11px] leading-relaxed">
+            <div className="p-4 bg-zinc-50/60 dark:bg-zinc-800/60 space-y-3 text-xs">
+              <div className="p-3 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200/70 dark:border-zinc-700 shadow-2xs space-y-1 text-zinc-700 dark:text-zinc-300">
+                <p className="font-semibold text-zinc-900 dark:text-white">Namaste! How can we assist you?</p>
+                <p className="text-zinc-500 dark:text-zinc-400 text-[11px] leading-relaxed">
                   Connect directly with our BHEL coordinator for immediate gardener, maid, painter, or driver dispatches.
                 </p>
               </div>
@@ -78,7 +78,7 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = () 
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="E.g., I need a gardener in Sector 2 tomorrow at 10 AM..."
-                    className="w-full text-xs p-3 rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:outline-none focus:ring-2 focus:ring-[#00c29e] transition-all resize-none"
+                    className="w-full text-xs p-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#00c29e] transition-all resize-none"
                   />
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] text-zinc-400">Avg reply ~ 5 mins</span>
