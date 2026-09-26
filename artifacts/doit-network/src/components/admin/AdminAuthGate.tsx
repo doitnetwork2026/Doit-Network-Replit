@@ -10,8 +10,8 @@ interface AdminAuthGateProps {
 }
 
 export const AdminAuthGate: React.FC<AdminAuthGateProps> = ({ onAuthorized }) => {
-  const [email, setEmail] = useState('rrichi336@gmail.com');
-  const [password, setPassword] = useState('Admin@123456');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -51,11 +51,6 @@ export const AdminAuthGate: React.FC<AdminAuthGateProps> = ({ onAuthorized }) =>
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const setQuickEmail = (quickEmail: string) => {
-    setEmail(quickEmail);
-    setErrorMessage(null);
   };
 
   return (
@@ -129,31 +124,6 @@ export const AdminAuthGate: React.FC<AdminAuthGateProps> = ({ onAuthorized }) =>
             </Button>
           </form>
 
-          {/* Quick Authorized Personas */}
-          <div className="pt-4 border-t border-zinc-100 space-y-2">
-            <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block">
-              Quick Test Personas (Configured in ADMIN_EMAILS)
-            </span>
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={() => setQuickEmail('rrichi336@gmail.com')}
-                className="p-2 rounded-xl bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 text-left transition-colors cursor-pointer"
-              >
-                <span className="text-[11px] font-bold text-zinc-800 block truncate">rrichi336@gmail.com</span>
-                <span className="text-[10px] text-[#00876e] font-semibold">Super Admin (User)</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setQuickEmail('admin@example.com')}
-                className="p-2 rounded-xl bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 text-left transition-colors cursor-pointer"
-              >
-                <span className="text-[11px] font-bold text-zinc-800 block truncate">admin@example.com</span>
-                <span className="text-[10px] text-zinc-500 font-semibold">Platform Admin</span>
-              </button>
-            </div>
-          </div>
         </CardContent>
       </Card>
     </div>

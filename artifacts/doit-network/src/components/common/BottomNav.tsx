@@ -97,7 +97,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
               onClick={() => handleNavClick(item)}
               aria-current={isActive ? 'page' : undefined}
               aria-label={`${item.label} (${item.sublabel})`}
-              className={`relative flex flex-col items-center justify-center flex-1 py-1.5 px-1 sm:px-3 rounded-2xl transition-all duration-150 cursor-pointer select-none active:scale-95 touch-manipulation min-h-[48px] ${
+              className={`${item.id === 'login' ? 'hidden sm:flex' : 'flex'} relative flex-col items-center justify-center flex-1 py-1.5 px-1 sm:px-3 rounded-2xl transition-all duration-150 cursor-pointer select-none active:scale-95 touch-manipulation min-h-[48px] ${
                 isActive 
                   ? 'text-[#00755f] bg-[#e6faf6] border border-[#99ede0]/80 shadow-2xs font-bold' 
                   : 'text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100/70 border border-transparent'

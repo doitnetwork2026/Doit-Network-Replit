@@ -1,0 +1,698 @@
+You are a senior UI/UX designer and frontend engineer.
+
+I am building the website for my business:
+
+DOIT NETWORKS
+
+Doit Networks is an Indian local-services marketplace that connects customers with service providers such as drivers, maids, helpers, labour, gardeners, caretakers, painters, pest-control technicians, sanitation workers, etc.
+
+I want you to completely improve the WEBSITE LOGIN EXPERIENCE and create a professional ADMIN LOGIN PAGE.
+
+==================================================
+1. OVERALL DESIGN DIRECTION
+==================================================
+
+The login experience should feel:
+
+- Modern
+- Premium
+- Trustworthy
+- Simple
+- Professional
+- Indian/local-service focused
+- Clean
+- Fast
+- Easy to understand
+- Mobile responsive
+
+Do NOT make it look like a generic template.
+
+Do NOT overcrowd the page.
+
+Do NOT use excessive gradients, animations, shadows, or decorative elements.
+
+The design should look like a serious startup/product.
+
+Use the existing Doit Networks branding if it already exists in the project.
+
+Do not randomly change the existing brand colors.
+
+==================================================
+2. LOGIN TYPES
+==================================================
+
+There should be separate login experiences for:
+
+1. Customer Login
+2. Service Provider Login
+3. Admin Login
+
+Customer and Provider login should NOT look like Admin Login.
+
+Admin login should have a more secure and professional appearance.
+
+==================================================
+3. CUSTOMER LOGIN
+==================================================
+
+Create a simple customer login page.
+
+Main heading:
+
+"Welcome to Doit"
+
+Subheading:
+
+"Book trusted local services, whenever you need them."
+
+Hindi helper text can be:
+
+"अपने पास भरोसेमंद सेवा पाएं"
+
+Primary login method:
+
+Mobile Number
+
+Use:
+
++91 | Enter mobile number
+
+Primary button:
+
+"Continue"
+
+Do NOT force users to create a complicated password account.
+
+Use OTP authentication.
+
+Flow:
+
+Mobile Number
+↓
+Continue
+↓
+OTP Verification
+↓
+Login
+
+==================================================
+4. OTP SCREEN
+==================================================
+
+Create a clean OTP verification screen.
+
+Heading:
+
+"Verify your number"
+
+Subheading:
+
+"We've sent a verification code to your mobile number."
+
+Show:
+
++91 XXXXX XXXXX
+
+OTP input:
+
+[ _ ] [ _ ] [ _ ] [ _ ] [ _ ] [ _ ]
+
+Buttons:
+
+"Verify"
+
+"Resend OTP"
+
+Countdown:
+
+"Resend in 30s"
+
+Allow the user to edit the mobile number.
+
+Do not make OTP entry frustrating.
+
+Automatically move between OTP boxes.
+
+Support paste OTP.
+
+==================================================
+5. SERVICE PROVIDER LOGIN
+==================================================
+
+Create a separate Provider Login.
+
+Heading:
+
+"Welcome back"
+
+Subheading:
+
+"Manage your services and bookings with Doit."
+
+Login using:
+
+Mobile Number
+
+OTP
+
+After login, provider goes to:
+
+Provider Dashboard
+
+The provider should be able to see:
+
+- New Requests
+- Today's Jobs
+- Upcoming Jobs
+- Earnings
+- Rating
+- Profile
+- Availability
+
+==================================================
+6. ADMIN LOGIN
+==================================================
+
+Create a completely separate:
+
+"Doit Admin"
+
+login page.
+
+This page is NOT for customers or service providers.
+
+The visual design should communicate:
+
+- Security
+- Control
+- Professionalism
+- Reliability
+
+Page layout:
+
+Desktop:
+
+LEFT SIDE:
+Brand / visual area
+
+RIGHT SIDE:
+Admin login card
+
+Mobile:
+
+Only the login card and compact Doit branding.
+
+==================================================
+7. ADMIN LOGIN CONTENT
+==================================================
+
+Top of card:
+
+DOIT NETWORKS
+
+Badge:
+
+"ADMIN PORTAL"
+
+Heading:
+
+"Welcome back, Admin"
+
+Subheading:
+
+"Sign in to manage Doit Networks."
+
+Fields:
+
+Email Address
+
+Password
+
+Password field must include:
+
+Show / Hide password icon
+
+Below password:
+
+"Forgot password?"
+
+Primary button:
+
+"Sign In"
+
+Below:
+
+"Secure Admin Access"
+
+Do not include:
+
+Google Login
+Facebook Login
+Social Login
+
+Admin login should use secure authentication.
+
+==================================================
+8. ADMIN SECURITY UI
+==================================================
+
+Include subtle security messaging:
+
+"Protected admin access"
+
+Use a small shield/lock icon.
+
+Do NOT expose security-sensitive implementation details in the UI.
+
+Do not display:
+
+- API keys
+- Database credentials
+- Secrets
+- Authentication tokens
+- Internal server information
+
+Never hard-code admin credentials in frontend code.
+
+==================================================
+9. ADMIN LOGIN STATES
+==================================================
+
+Create proper UI states.
+
+Normal:
+
+Sign In
+
+Loading:
+
+Signing in...
+
+Error:
+
+"Invalid email or password."
+
+Network error:
+
+"Unable to connect. Please try again."
+
+Too many attempts:
+
+"Too many login attempts. Please try again later."
+
+Success:
+
+Redirect to Admin Dashboard.
+
+==================================================
+10. ADMIN FORGOT PASSWORD
+==================================================
+
+Create:
+
+Forgot Password
+
+Screen.
+
+Heading:
+
+"Reset your password"
+
+Subheading:
+
+"Enter your admin email and we'll help you reset your password."
+
+Input:
+
+Admin Email
+
+Button:
+
+"Send Reset Link"
+
+Then show success:
+
+"Password reset instructions have been sent."
+
+Do not reveal whether a particular email exists.
+
+==================================================
+11. ADMIN DASHBOARD REDIRECT
+==================================================
+
+After successful admin authentication:
+
+Redirect to:
+
+/admin/dashboard
+
+Do NOT allow an unauthenticated user to access:
+
+/admin/dashboard
+
+or other admin routes.
+
+Create protected route logic.
+
+==================================================
+12. ADMIN SESSION
+==================================================
+
+Implement proper authentication architecture.
+
+Do NOT store passwords in localStorage.
+
+Do NOT store sensitive authentication information insecurely.
+
+Use secure session/token handling appropriate for the existing backend.
+
+If backend authentication is not yet connected:
+
+Create a clean authentication service interface/mock implementation.
+
+Clearly mark mock authentication as development-only.
+
+Do not create fake production security.
+
+==================================================
+13. LOGIN PAGE VISUAL DESIGN
+==================================================
+
+Use:
+
+- Clean white or subtle neutral background
+- Modern card
+- Rounded corners
+- Professional typography
+- Consistent spacing
+- Strong primary CTA
+- Minimal decorative elements
+- Subtle borders
+- Subtle shadows
+
+Avoid:
+
+- Huge illustrations
+- Excessive gradients
+- Too many colors
+- Flashy animations
+- Excessive rounded shapes
+- Clutter
+
+==================================================
+14. DESKTOP LOGIN LAYOUT
+==================================================
+
+Use a centered responsive layout.
+
+Recommended structure:
+
+------------------------------------------------
+|                                              |
+|       DOIT              LOGIN CARD           |
+|                                              |
+|   Local services        Welcome to Doit      |
+|   made simple           Mobile Number       |
+|                         [ +91 | ______ ]    |
+|                         [ Continue ]         |
+|                                              |
+------------------------------------------------
+
+For Admin:
+
+------------------------------------------------
+|                                              |
+|   DOIT NETWORKS        ADMIN LOGIN CARD     |
+|   ADMIN PORTAL                              |
+|                         Welcome back, Admin  |
+|                         Email               |
+|                         Password            |
+|                         Forgot password?    |
+|                         [ Sign In ]         |
+|                                              |
+------------------------------------------------
+
+Do not copy this ASCII layout literally.
+Use it only as a layout reference.
+
+==================================================
+15. MOBILE RESPONSIVENESS
+==================================================
+
+The login pages must work perfectly on:
+
+- Mobile
+- Tablet
+- Laptop
+- Desktop
+
+On mobile:
+
+- Full-width layout
+- Comfortable padding
+- Large input fields
+- Large CTA
+- No horizontal scrolling
+- Keyboard should not hide fields/buttons
+- OTP should work comfortably with mobile keyboards
+
+==================================================
+16. ACCESSIBILITY
+==================================================
+
+Use:
+
+- Accessible labels
+- Proper input types
+- Keyboard navigation
+- Visible focus states
+- Good color contrast
+- Minimum comfortable touch targets
+- Clear error messages
+
+Do not rely only on color to communicate errors.
+
+==================================================
+17. LOGIN COPY
+==================================================
+
+Keep the language simple.
+
+Customer:
+
+"Welcome to Doit"
+
+"Book trusted local services, whenever you need them."
+
+"अपने पास भरोसेमंद सेवा पाएं"
+
+Provider:
+
+"Welcome back"
+
+"Manage your services and bookings with Doit."
+
+Admin:
+
+"Welcome back, Admin"
+
+"Sign in to manage Doit Networks."
+
+Avoid corporate jargon.
+
+==================================================
+18. BRANDING
+==================================================
+
+Use:
+
+DOIT
+
+Networks
+
+Where appropriate.
+
+Keep the logo visually consistent throughout:
+
+- Login
+- Admin Login
+- Dashboard
+- Navigation
+- Loading states
+
+Do not create a completely different brand identity for Admin.
+
+Admin can use a more professional layout while retaining Doit's branding.
+
+==================================================
+19. MICRO-INTERACTIONS
+==================================================
+
+Use subtle interactions only.
+
+Examples:
+
+- Button loading state
+- Input focus animation
+- OTP auto-focus
+- Password visibility toggle
+- Smooth page transitions
+- Error feedback
+
+Do not use unnecessary animations.
+
+The page should feel fast.
+
+==================================================
+20. FORM VALIDATION
+==================================================
+
+Customer:
+
+Validate Indian mobile number.
+
+Provider:
+
+Validate Indian mobile number.
+
+Admin:
+
+Validate email format.
+
+Password:
+
+Minimum requirements should be enforced by the backend/authentication system.
+
+Show validation errors next to the relevant field.
+
+Examples:
+
+"Please enter your mobile number."
+
+"Please enter a valid mobile number."
+
+"Please enter your email."
+
+"Please enter your password."
+
+==================================================
+21. COMPONENT ARCHITECTURE
+==================================================
+
+Create reusable components such as:
+
+LoginPage
+AdminLoginPage
+ProviderLoginPage
+OtpVerificationPage
+ForgotPasswordPage
+LoginForm
+PhoneInput
+OtpInput
+PasswordInput
+PrimaryButton
+AuthCard
+LogoHeader
+AuthError
+LoadingButton
+
+Do not duplicate login UI code.
+
+==================================================
+22. ROUTING
+==================================================
+
+Create routes:
+
+/login
+
+/provider/login
+
+/admin/login
+
+/verify-otp
+
+/admin/forgot-password
+
+/admin/dashboard
+
+Protect admin routes.
+
+Protect provider routes.
+
+Protect customer account routes.
+
+==================================================
+23. IMPORTANT SECURITY RULE
+==================================================
+
+Never implement authentication by simply checking:
+
+email == "admin@gmail.com"
+
+or
+
+password == "123456"
+
+Do not hard-code credentials.
+
+Use a proper authentication abstraction.
+
+If the backend is not available yet, create:
+
+AuthService
+
+with a mock implementation for development.
+
+Make it easy to replace with real authentication later.
+
+==================================================
+24. IMPROVE EXISTING LOGIN UI
+==================================================
+
+Before changing the current login page:
+
+1. Inspect the existing project.
+2. Identify the current authentication flow.
+3. Identify the existing brand colors.
+4. Identify existing reusable components.
+5. Preserve working functionality.
+6. Improve the UI instead of unnecessarily rewriting the entire application.
+7. Maintain existing API/backend integrations.
+8. Do not break existing routes.
+9. Make the new design consistent with the rest of the website.
+
+If the current login UI is poor, redesign it substantially.
+
+==================================================
+25. FINAL QUALITY REQUIREMENTS
+==================================================
+
+The final login experience should feel like a real startup product.
+
+It should NOT look like:
+
+- A student project
+- A coding tutorial
+- A generic Bootstrap template
+- A random AI-generated dashboard
+
+It should look polished enough for a real Indian service marketplace.
+
+Prioritize:
+
+1. Trust
+2. Simplicity
+3. Security
+4. Speed
+5. Mobile usability
+6. Clean visual hierarchy
+7. Consistent Doit branding
+
+First inspect the existing project and then implement the improved login system.
+
+Do not create unnecessary pages.
+
+Do not break existing functionality.
+
+Make sure the application builds successfully after your changes.

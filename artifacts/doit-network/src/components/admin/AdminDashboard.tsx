@@ -66,6 +66,7 @@ interface AdminDashboardProps {
   onAddNewArea?: (area: ServiceArea) => void;
   onOpenNewProviderModal?: () => void;
   onNavigateWebsite?: () => void;
+  onNavigateAdminDashboard?: () => void;
 }
 
 export const AdminDashboard: React.FC<AdminDashboardProps> = ({
@@ -88,7 +89,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   onAddNewCategory,
   onAddNewArea,
   onOpenNewProviderModal,
-  onNavigateWebsite
+  onNavigateWebsite,
+  onNavigateAdminDashboard
 }) => {
   // Theme State
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -112,18 +114,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     permissions: string[];
   } | null>(() => {
     try {
-      const cached = localStorage.getItem('doit_verified_admin_session');
+      const cached = sessionStorage.getItem('doit_verified_admin_session');
       if (cached) return JSON.parse(cached);
     } catch (e) {}
-    return {
-      email: 'rrichi336@gmail.com',
-      role: 'SUPER_ADMIN',
-      permissions: [
-        'manage_admins', 'disable_admin', 'change_roles', 'approve_kyc',
-        'reject_kyc', 'approve_payout', 'approve_refund', 'approve_deletion',
-        'override_commission', 'adjust_wallet', 'view_audit_logs', 'edit_pricing', 'edit_cms'
-      ]
-    };
+    return null;
   });
 
   // Navigation State
@@ -211,9 +205,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
   const handleLogout = () => {
     setAdminSession(null);
-    try {
-      localStorage.removeItem('doit_verified_admin_session');
-    } catch (e) {}
+      try {
+        sessionStorage.removeItem('doit_verified_admin_session');
+      } catch (e) {}
   };
 
   // If Admin not logged in, show Auth Gate
@@ -223,8 +217,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         onSuccess={(admin) => {
           setAdminSession(admin);
           try {
-            localStorage.setItem('doit_verified_admin_session', JSON.stringify(admin));
+            sessionStorage.setItem('doit_verified_admin_session', JSON.stringify(admin));
           } catch (e) {}
+          onNavigateAdminDashboard?.();
         }}
         onBackToWebsite={onNavigateWebsite}
         theme={theme}

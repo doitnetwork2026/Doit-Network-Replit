@@ -23,7 +23,7 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = () 
   };
 
   return (
-    <div className="fixed bottom-22 sm:bottom-24 lg:bottom-6 right-3 sm:right-6 z-40 flex flex-col items-end pointer-events-none">
+    <div className="fixed bottom-28 sm:bottom-24 lg:bottom-6 right-3 sm:right-6 z-40 flex flex-col items-end pointer-events-none">
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -107,7 +107,7 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = () 
         aria-label="Contact DOIT on WhatsApp"
       >
         <MessageCircle className="w-4 h-4" />
-        <span className="text-xs font-bold tracking-wide">WhatsApp Desk</span>
+        <span className="hidden sm:inline text-xs font-bold tracking-wide">WhatsApp Desk</span>
       </motion.button>
     </div>
   );

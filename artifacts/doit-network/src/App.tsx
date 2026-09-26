@@ -35,7 +35,14 @@ import { AdminDashboard } from './components/admin/AdminDashboard';
 import { AuthPortalModal, AuthUserType } from './components/auth/AuthPortalModal';
 
 export default function App() {
-  const [currentRole, setCurrentRole] = useState<UserRole>('public');
+  const [currentRole, setCurrentRole] = useState<UserRole>(() => {
+    if (typeof window === 'undefined') return 'public';
+    const path = window.location.pathname;
+    if (path.startsWith('/admin/')) return 'admin';
+    if (path.startsWith('/provider/')) return 'provider';
+    if (path.startsWith('/customer')) return 'customer';
+    return 'public';
+  });
   const [selectedLocality, setSelectedLocality] = useState<string>('BHEL Area, Bhopal');
   
   // Central application state
@@ -52,8 +59,16 @@ export default function App() {
   const [initialCategoryForCustomer, setInitialCategoryForCustomer] = useState<ServiceCategoryId | null>(null);
   const [initialSubServiceForCustomer, setInitialSubServiceForCustomer] = useState<string | null>(null);
   const [customerActiveTab, setCustomerActiveTab] = useState<'explore' | 'bookings' | 'recurring' | 'payments' | 'refunds' | 'notifications' | 'support' | 'account_deletion'>('explore');
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [authInitialType, setAuthInitialType] = useState<AuthUserType>('customer');
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.location.pathname === '/login' || window.location.pathname === '/provider/login';
+  });
+  const [authInitialType, setAuthInitialType] = useState<AuthUserType>(() => {
+    if (typeof window !== 'undefined' && window.location.pathname === '/provider/login') {
+      return 'provider';
+    }
+    return 'customer';
+  });
 
   // Active Provider simulated in Provider Portal (Defaults to Rahul Sharma)
   const [activeProviderId, setActiveProviderId] = useState<string>('PRV-00124');
@@ -68,7 +83,18 @@ export default function App() {
 
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPath(window.location.pathname);
+      const path = window.location.pathname;
+      setCurrentPath(path);
+      if (path === '/login' || path === '/provider/login') {
+        setAuthInitialType(path === '/provider/login' ? 'provider' : 'customer');
+        setIsAuthModalOpen(true);
+      } else {
+        setIsAuthModalOpen(false);
+      }
+      if (path.startsWith('/admin/')) setCurrentRole('admin');
+      else if (path.startsWith('/provider/')) setCurrentRole('provider');
+      else if (path.startsWith('/customer')) setCurrentRole('customer');
+      else if (path === '/') setCurrentRole('public');
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -105,6 +131,7 @@ export default function App() {
   const handleOpenLogin = (initialType: AuthUserType = 'customer') => {
     setAuthInitialType(initialType);
     setIsAuthModalOpen(true);
+    navigateTo(initialType === 'provider' ? '/provider/login' : '/login');
   };
 
   // Scroll to top automatically whenever currentRole changes
@@ -119,6 +146,7 @@ export default function App() {
 
   const handleLoginSuccess = (type: AuthUserType, userData: { name: string; phone: string; email: string }) => {
     handleSelectRole(type);
+    navigateTo(type === 'provider' ? '/provider/dashboard' : '/customer');
     showToast(`Welcome back, ${userData.name}!`);
   };
 
@@ -474,16 +502,18 @@ export default function App() {
       </AnimatePresence>
 
       {/* Global Master Header with Role Switcher & Locality Selector */}
-      <RoleSwitcherHeader
-        currentRole={currentRole}
-        onSelectRole={handleSelectRole}
-        selectedLocality={selectedLocality}
-        onSelectLocality={setSelectedLocality}
-        pendingKycCount={pendingKycCount}
-        unassignedBookingsCount={unassignedBookingsCount}
-        onResetData={handleResetData}
-        onOpenLogin={() => handleOpenLogin()}
-      />
+      {!currentPath.startsWith('/admin/') && (
+        <RoleSwitcherHeader
+          currentRole={currentRole}
+          onSelectRole={handleSelectRole}
+          selectedLocality={selectedLocality}
+          onSelectLocality={setSelectedLocality}
+          pendingKycCount={pendingKycCount}
+          unassignedBookingsCount={unassignedBookingsCount}
+          onResetData={handleResetData}
+          onOpenLogin={() => handleOpenLogin()}
+        />
+      )}
 
       {/* Role-Specific View Rendering with smooth Framer Motion transitions */}
       <main className="flex-1 pb-24 sm:pb-28 lg:pb-0">
@@ -516,7 +546,7 @@ export default function App() {
                     handleSelectRole('provider');
                   }}
                   onOpenAdminDashboard={() => {
-                    navigateTo('/');
+                    navigateTo('/admin/login');
                     handleSelectRole('admin');
                   }}
                   onOpenProviderOnboarding={() => {
@@ -540,7 +570,10 @@ export default function App() {
                   }}
                   onOpenCustomerApp={() => handleSelectRole('customer', 'explore')}
                   onOpenProviderApp={() => handleSelectRole('provider')}
-                  onOpenAdminDashboard={() => handleSelectRole('admin')}
+                   onOpenAdminDashboard={() => {
+                     navigateTo('/admin/login');
+                     handleSelectRole('admin');
+                   }}
                   onOpenProviderOnboarding={() => {
                     handleSelectRole('public');
                   }}
@@ -613,6 +646,7 @@ export default function App() {
                   setCmsContent(updatedCms);
                   showToast('CMS Content updated successfully');
                 }}
+                onNavigateAdminDashboard={() => navigateTo('/admin/dashboard')}
               />
             )}
           </motion.div>
@@ -620,13 +654,15 @@ export default function App() {
       </main>
 
       {/* Mobile & Tablet Bottom Navigation Bar (Visible on mobile & tablet, hidden on lg:) */}
-      <BottomNav
-        currentRole={currentRole}
-        onSelectRole={handleSelectRole}
-        pendingKycCount={pendingKycCount}
-        activeBookingsCount={activeCustomerBookingsCount}
-        onOpenLogin={() => handleOpenLogin()}
-      />
+      {!currentPath.startsWith('/admin/') && (
+        <BottomNav
+          currentRole={currentRole}
+          onSelectRole={handleSelectRole}
+          pendingKycCount={pendingKycCount}
+          activeBookingsCount={activeCustomerBookingsCount}
+          onOpenLogin={() => handleOpenLogin()}
+        />
+      )}
 
       {/* Persistent WhatsApp Floating Desk */}
       <WhatsAppFloatingButton />
@@ -634,7 +670,10 @@ export default function App() {
       {/* Shared customer/provider login and registration flow */}
       <AuthPortalModal
         isOpen={isAuthModalOpen}
-        onClose={() => setIsAuthModalOpen(false)}
+        onClose={() => {
+          setIsAuthModalOpen(false);
+          if (currentPath === '/login' || currentPath === '/provider/login') navigateTo('/');
+        }}
         initialType={authInitialType}
         onLoginSuccess={handleLoginSuccess}
       />

@@ -97,21 +97,21 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200/80 shadow-2xs">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative">
-        <div className="flex items-center justify-between py-2.5 gap-2 sm:gap-4">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 relative">
+        <div className="flex items-center justify-between py-2.5 gap-1.5 sm:gap-4">
           
           {/* Brand & Logo */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
             <motion.div 
               onClick={() => onSelectRole('public')}
               whileTap={{ scale: 0.96 }}
               className="flex items-center gap-2 sm:gap-2.5 cursor-pointer group"
             >
-              <DoitLogo className="w-8 h-8 group-hover:scale-105 transition-transform" />
-              <div>
+              <DoitLogo className="w-7 h-7 sm:w-8 sm:h-8 group-hover:scale-105 transition-transform" />
+              <div className="min-w-0">
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="font-bold text-base sm:text-lg tracking-tight text-zinc-900">Doit Network</span>
-                  <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded-full bg-[#e6faf6] text-[#00755f] border border-[#99ede0]">
+                  <span className="font-bold text-sm sm:text-lg tracking-tight text-zinc-900 whitespace-nowrap">Doit Network</span>
+                  <span className="hidden sm:inline-flex text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded-full bg-[#e6faf6] text-[#00755f] border border-[#99ede0]">
                     Bhopal
                   </span>
                   {currentRole !== 'public' && (
@@ -120,7 +120,7 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
                     </span>
                   )}
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-zinc-400 -mt-0.5 font-normal">Hyperlocal Home Services</p>
+                <p className="hidden sm:block text-[10px] sm:text-[11px] text-zinc-400 -mt-0.5 font-normal">Hyperlocal Home Services</p>
               </div>
             </motion.div>
           </div>
@@ -162,7 +162,7 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
           {/* Right Section: Locality Selector on all screens + Desktop More Menu button ONLY on lg: */}
           <div className="flex items-center gap-2 sm:gap-2.5">
             {/* Locality Selector Pill with Google Map trigger */}
-            <div className="flex items-center gap-1 sm:gap-1.5 bg-zinc-50 hover:bg-zinc-100 border border-zinc-200/90 rounded-full px-2.5 sm:px-3 py-1 text-xs text-zinc-600 transition-colors">
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-zinc-50 hover:bg-zinc-100 border border-zinc-200/90 rounded-full px-2 sm:px-3 py-1 text-xs text-zinc-600 transition-colors shrink-0">
               <button
                 type="button"
                 onClick={() => setIsMapModalOpen(true)}
@@ -175,7 +175,7 @@ export const RoleSwitcherHeader: React.FC<RoleSwitcherHeaderProps> = ({
                 aria-label="Select locality"
                 value={selectedLocality}
                 onChange={(e) => onSelectLocality(e.target.value)}
-                className="bg-transparent text-xs text-zinc-800 font-medium focus:outline-none cursor-pointer pr-1 max-w-[110px] sm:max-w-[160px] truncate"
+                className="bg-transparent text-xs text-zinc-800 font-medium focus:outline-none cursor-pointer pr-1 max-w-[112px] sm:max-w-[160px] truncate"
               >
                 {localities.map((loc) => (
                   <option key={loc} value={loc} className="bg-white text-zinc-900">
